@@ -1,0 +1,48 @@
+Wordsearch-Creator
+
+Project Architecture & Stack
+Core Build Tool: Vite (fast local development, optimal production bundling).
+
+PWA Layer: Web App Manifest (manifest.json) and a Service Worker utilizing the Cache API for offline capabilities and installability.
+
+Hosting: GitHub Pages (static asset deployment via GitHub Actions).
+
+PDF Generation: jsPDF (or modern print stylesheets) to handle multi-page layout generation for both the puzzle sheet and the solution key.
+
+Modular Code Structure: Separation of concerns between the Generator Engine (pure algorithmic logic), State Management, UI Rendering/Interaction, and PWA/Export Modules.
+
+Core Algorithmic Plan
+Grid Sizing & Validation: Clean input processing (uppercase conversion, duplicate removal, length filtering), followed by dynamic sizing calculations based on the longest word and total letter count.
+
+Placement Engine: Implementation of backtracking or randomized directional placement (Horizontal, Vertical, Diagonal, and their respective reverses) with intersection tracking.
+
+Matrix Fill & State Separation: Filling empty cells with pseudo-random alphabet characters while maintaining a clean, immutable reference data model for the solution key coordinates.
+
+Interactivity & PWA: Touch/mouse drag-selection for word hunting, live validation, state persistence, and offline caching.
+
+
+Structure Map:
+wordsearch-creator/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # GitHub Pages automated deployment action
+├── public/
+│   ├── icons/                  # PWA app icons (192x192, 512x512)
+│   ├── manifest.json           # PWA Web App Manifest
+│   └── sw.js                   # Service Worker for offline caching
+├── src/
+│   ├── css/
+│   │   └── style.css           # Responsive styles & print/PDF media queries
+│   ├── js/
+│   │   ├── engine.js           # Core generator engine (sizing, placement, filler)
+│   │   ├── storage.js          # LocalStorage handlers for saving/loading puzzles & word lists
+│   │   ├── io.js               # Text list import (parsing/sanitizing) & export handlers
+│   │   ├── pwa.js              # Service Worker registration & install prompts
+│   │   ├── pdf.js              # jsPDF multi-page export logic (Puzzle + Solution Key)
+│   │   └── ui.js               # DOM bindings, drag-selection, solution toggle, form management
+│   └── main.js                 # Application entry point tying modules together
+├── index.html                  # Main application shell & UI layout
+├── package.json                # Dependencies (Vite, jsPDF, etc.)
+└── vite.config.js              # Vite configuration for GitHub Pages base path
+
+
