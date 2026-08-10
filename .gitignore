@@ -1,0 +1,19 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diagnostic output from local build
+dist/
+
+# Dependency directories
+node_modules/
+
+# My Project Information Notes
+ProjectNotes.txt
+
+# OS-specific files
+.DS_Store
+Thumbs.db

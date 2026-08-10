@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="theme-color" content="#2563eb" />  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nikki's Word Search Creator</title>
+    <link rel="manifest" href="./manifest.json" />
+    <script type="module" crossorigin src="./assets/index-DZazx-BX.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-eTfv9nzX.css">
+  </head>
+  <body>
+
+    <div id="fireworks-container"></div>
+
+    <div id="app" class="app-container">
+      <header>
+        <h1>Nikki's Word Search Creator</h1>
+        <p>Design, play, save, and print custom word search puzzles.</p>
+      </header>
+
+      <div class="main-layout">
+        <aside class="control-sidebar">
+          <div class="input-group">
+            <label for="puzzle-title">Puzzle Title:</label>
+            <input type="text" id="puzzle-title" value="Kiki's Word Search" />
+          </div>
+
+          <div class="input-group">
+            <label for="word-input">Word List (one per line or comma-separated or paste AI list):</label>
+            <textarea id="word-input" rows="8" placeholder="ENTER, WORDS, HERE"></textarea>
+          </div>
+
+          <div class="button-group">
+            <button id="generate-btn" class="btn primary">Generate Puzzle</button>
+            <button id="toggle-solution-btn" class="btn secondary">Show Solution Key</button>
+          </div>
+
+          <div class="button-group secondary-actions">
+            <button id="export-text-btn" class="btn outline">Export Words (.txt)</button>
+            <button id="save-btn" class="btn outline">Save Project</button>
+            <button id="load-projects-btn" class="btn outline">Load Saved Project</button>          
+            <button id="print-btn" class="btn outline">Print / Save PDF</button>
+          </div>
+        </aside>
+
+        <main class="puzzle-workspace">
+          <h2 id="puzzle-title-display">Kiki's Word Search</h2>
+          <div id="puzzle-grid" class="puzzle-grid"></div>
+          
+          <div class="word-bank-container">
+            <h3 class="input-group label">Words to Find:</h3>
+            <ul id="word-list" class="word-list"></ul>
+          </div>
+        </main>
+      </div>
+    </div>
+
+  <!-- Victory Modal -->
+  <div id="victory-modal" class="modal-hidden">
+    <div class="modal-content">
+      <h3>🎉 Awesome Job!</h3>
+      <p>You found all the words!</p>
+    </div>
+  </div>
+
+    <!-- Saved Projects Modal -->
+  <div id="projects-modal" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3>Saved Projects</h3>
+              <!-- Import button always stays visible here -->
+              <button class="btn-sm btn-import" id="modal-import-btn">Import</button>
+              <button id="close-modal-btn" class="btn-close">&times;</button>
+          </div>
+          
+          <div class="modal-body">
+              <!-- Only the dynamic project list renders here -->
+              <ul id="saved-projects-list"></ul>
+          </div>
+      </div>
+  </div>
+
+  </body>
+</html>
